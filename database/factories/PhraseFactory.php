@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use DuxDucisArsen\Models\FraseInspiracion;
+use DuxDucisArsen\Phrases\Models\Phrase;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FraseInspiracionFactory extends Factory
+class PhraseFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = FraseInspiracion::class;
+    protected $model = Phrase::class;
 
     /**
      * Define the model's default state.

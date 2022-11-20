@@ -1,16 +1,24 @@
 <?php
 
-namespace DuxDucisArsen\Models;
+namespace DuxDucisArsen\Phrases\Models;
 
-use App\Traits\CreatedByCreatingEvent;
-use App\Traits\EloquentRelations\CreatedBy;
+use Database\Factories\PhraseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
-class FraseInspiracion extends Model
+class Phrase extends Model
 {
-    use HasFactory, CreatedBy;
+    use HasFactory;
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return PhraseFactory::new();
+    }
 
     protected $guarded = ['id'];
 
@@ -33,6 +41,15 @@ class FraseInspiracion extends Model
         self::saved( function () { // Se podría hacer con Event y Listener, pero cuando es algo simple más fácil acá
             Cache::store('redis')->forget('frases_inspiracion_publicas');
         });
+    }
+
+    
+    /**
+     * RELATIONS
+     */
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 
 
@@ -68,4 +85,6 @@ class FraseInspiracion extends Model
     {
         return self::whereNivelPrivacidad(0)->get();
     }
+
+    
 }

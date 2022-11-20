@@ -10,12 +10,14 @@
             "role": "CEO"
         }
     ],
-    "require": {
-        "php": "^7.1||^7.2||^7.3||^8.0||^8.1"
-    },
     "autoload": {
         "psr-4": {
             "DuxDucisArsen\\Phrases\\": "src/",
+            "Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "DuxDucisArsen\\Phrases\\Test\\": "tests/"
         }
     },
@@ -26,9 +28,13 @@
             ]
         }
     },
+    "require": {
+        "php": "^7.1||^7.2||^7.3||^8.0||^8.1"
+    },
     "require-dev": {
         "laravel/framework": "^9.40",
-        "orchestra/testbench": "^7.13"
+        "orchestra/testbench": "^7.13",
+        "phpunit/phpunit": "^9.5"
     },
     "scripts": {
         "test": "phpunit",

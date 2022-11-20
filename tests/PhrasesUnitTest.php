@@ -1,16 +1,15 @@
 <?php
 
-namespace Tests\Unit;
+namespace DuxDucisArsen\Phrases\Test;
 
-use App\Models\{
-    FraseInspiracion,
-    User
-};
+use App\Models\User;
+use DuxDucisArsen\Phrases\Models\Phrase;
+use DuxDucisArsen\Phrases\Test\TestCase;
 use Illuminate\Database\Eloquent\Factories\Sequence;
-use Tests\TestCase;
 
-class FraseInspiracionUnitTest extends TestCase
+class PhrasesUnitTest extends TestCase
 {
+
     /**
      * Recupera solo frases privadas.
      *
@@ -24,7 +23,7 @@ class FraseInspiracionUnitTest extends TestCase
         $cantPublicos = 7;
         $authUserId = 99;//  Pngo cualquier número
 
-        $frases = FraseInspiracion::factory()
+        $frases = Phrase::factory()
             ->count($cantPrivados)
             // ->privada()
             // ->for(User::factory()->state([
@@ -34,8 +33,8 @@ class FraseInspiracionUnitTest extends TestCase
             ->make([ 'createdBy' => $authUserId ]);
 
         // Act
-        $frasesPrivada = FraseInspiracion::getFrasesPrivadas();
-        $frasesPublica = FraseInspiracion::getFrasesPublicas();
+        $frasesPrivada = Phrase::getFrasesPrivadas();
+        $frasesPublica = Phrase::getFrasesPublicas();
 
 
         // Assert
