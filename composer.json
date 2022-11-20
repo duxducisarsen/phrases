@@ -1,0 +1,26 @@
+{
+    "name": "duxducisarsen/phrases",
+    "description": "Frases de motivación con su CRUD",
+    "require": {
+        "php": "^7.1||^7.2||^7.3||^8.0||^8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "DuxDucisArsen\\Phrases\\": "src/",
+            "DuxDucisArsen\\Phrases\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DuxDucisArsen\\Phrases\\PhrasesServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "laravel/framework": "^9.40"
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}
