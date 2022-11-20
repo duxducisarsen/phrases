@@ -26,7 +26,6 @@ class PhrasesServiceProvider extends ServiceProvider
             __DIR__.'/../routes/web.php' => base_path('routes/phrases.php')
         ], 'phrase-routes');
 
-        
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/phrases'),
         ], 'phrases-views');
