@@ -1,6 +1,14 @@
 {
     "name": "duxducisarsen/phrases",
     "description": "Frases de motivación con su CRUD",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Alejandro Palarich",
+            "email": "adpalarich@neuper.com.ar",
+            "role": "CEO"
+        }
+    ],
     "require": {
         "php": "^7.1||^7.2||^7.3||^8.0||^8.1"
     },
