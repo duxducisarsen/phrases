@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('frase_inspiracions', function (Blueprint $table) {
+        Schema::create('phrases', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->createdBy();
+            $table->unsignedBigInteger('created_by');
 
-            $table->text('frase');
-            $table->tinyInteger('nivel_privacidad')->nullable()->comment('0: publica, 1: solo el creador puede verla');
+            $table->text('phrase');
+            $table->boolean('is_private')->default(1)->comment('0: publica, 1: solo el creador puede verla');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('frase_inspiracions');
+        Schema::dropIfExists('phrases');
     }
 };

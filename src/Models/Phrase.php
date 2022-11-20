@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Cache;
 class Phrase extends Model
 {
     use HasFactory;
+    
     /**
      * Create a new factory instance for the model.
      *
@@ -39,7 +40,7 @@ class Phrase extends Model
         });
 
         self::saved( function () { // Se podría hacer con Event y Listener, pero cuando es algo simple más fácil acá
-            Cache::store('redis')->forget('frases_inspiracion_publicas');
+            Cache::store('redis')->forget('public_phrases');
         });
     }
 
@@ -57,33 +58,34 @@ class Phrase extends Model
      * Busca una frase al azar
      *
      */
-    static public function getFraseAzar()
+    static public function getRandomPhrase()
     {
-        $frasesPublicas = Cache::store('redis')->rememberForever('frases_inspiracion_publicas', function () {
-            return self::getFrasesPublicas();
+        $publicPhrases = Cache::store('redis')->rememberForever('public_phrases', function () {
+            return self::getPublicPhrases();
         });
 
-        $frasesPrivadas  = self::getFrasesPrivadas();
+        $privatePhrases  = self::getPrivatePhrases(auth()->id());
 
-        return $frasesPublicas->merge($frasesPrivadas)->random();
+        return $publicPhrases->merge($privatePhrases)->random();
     }
 
     /**
      * Frase que creadas por el usuario autenticado con nivel de privacidad 1
      */
-    static public function getFrasesPrivadas()
+    static public function getPrivatePhrases($userId)
     {
-        return self::whereNivelPrivacidad(1)
-                    ->whereCreatedBy( auth()->id() )
-                    ->get();
+        return self::get();
+        // whereIsPrivate(1)
+                    // ->whereCreatedBy( $userId )
+                    // ->get();
     }
 
     /**
      * Frases con privacidad 0
      */
-    static public function getFrasesPublicas()
+    static public function getPublicPhrases()
     {
-        return self::whereNivelPrivacidad(0)->get();
+        return self::whereIsPrivate(0)->get();
     }
 
     

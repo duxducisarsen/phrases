@@ -23,7 +23,7 @@ class PhraseFactory extends Factory
     {
         return [
             'created_by' => 99, // Pongo por defecto
-            'frase'      => $this->faker->name()
+            'phrase'      => $this->faker->name()
         ];
     }
 
@@ -32,11 +32,11 @@ class PhraseFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function publica()
+    public function public()
     {
         return $this->state(function (array $attributes) {
             return [
-                'nivel_privacidad' => 0,
+                'is_private' => 0,
             ];
         });
     }
@@ -46,11 +46,11 @@ class PhraseFactory extends Factory
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function privada()
+    public function private()
     {
         return $this->state(function (array $attributes) {
             return [
-                'nivel_privacidad' => 1,
+                'is_private' => 1,
             ];
         });
     }

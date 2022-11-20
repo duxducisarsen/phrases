@@ -2,11 +2,11 @@
     <blockquote class="card-body mb-0  blockquote">
         <small>
             <cite class="text-muted">
-                {{ frase.frase }}
+                {{ phrase.phrase }}
             </cite>
         </small>
-        <i class="fas fa-lock" title="Solo usted puede ver esta frase" v-if="frase.nivel_privacidad == 1"></i>
-        <a v-if="frase && urlEdit" style="#" v-on:click.prevent="toEdit( frase.id )"><i class="fas fa-pen-square"></i></a>
+        <i class="fas fa-lock" title="Solo usted puede ver esta frase" v-if="phrase.is_private == 1"></i>
+        <a v-if="phrase && urlEdit" style="#" v-on:click.prevent="toEdit( phrase.id )"><i class="fas fa-pen-square"></i></a>
     </blockquote>
 </template>
 
@@ -14,7 +14,7 @@
 <script>
     export default {
 
-        name: 'show-frase-inspiracion',
+        name: 'show-phrase',
 
         props: {
             urlEdit:{
@@ -32,15 +32,15 @@
 
         mixins: [dataTableMixin],
 
-        computed:{ frase(){ return this.dataTableRows; } },
+        computed:{ phrase(){ return this.dataTableRows; } },
 
         methods:
         {
             getRows(){ this.setRowsDatatable( this.urlShow) },
 
-            toEdit(frase_id){
+            toEdit(phraseId){
                 if (this.urlEdit) {
-                    window.location.href = this.urlEdit.replace(':frase_id', frase_id )
+                    window.location.href = this.urlEdit.replace(':phraseId', phraseId )
                 }
             }
         }

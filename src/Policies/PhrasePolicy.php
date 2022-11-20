@@ -1,11 +1,11 @@
 <?php
 
-namespace DuxDucisArsen\Policies;
+namespace DuxDucisArsen\Phrases\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\User;
 
-class FraseInspiracionPolicy
+class PhrasePolicy
 {
     use HandlesAuthorization;
     use AccessPolicies;

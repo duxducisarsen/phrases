@@ -1,10 +1,10 @@
 <?php
 
-namespace DuxDucisArsen\Http\Requests;
+namespace DuxDucisArsen\Phrases\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FraseInspiracionRequest extends FormRequest
+class PhraseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class FraseInspiracionRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('createOrEdit', App\Models\FraseInspiracion::class);
+        return $this->user()->can('createOrEdit', DuxDucisArsen\Phrases\Models\Phrase::class);
     }
 
     /**
@@ -24,8 +24,8 @@ class FraseInspiracionRequest extends FormRequest
     public function rules()
     {
         return [
-            'frase'             => 'required|string|max:65000',
-            'nivel_privacidad'  => 'required|integer|max:1|min:0'
+            'phrase'             => 'required|string|max:65000',
+            'is_private'  => 'required|integer|max:1|min:0'
         ];
     }
 }
