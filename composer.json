@@ -2,6 +2,7 @@
     "name": "duxducisarsen/phrases",
     "description": "Frases de motivación con su CRUD",
     "license": "proprietary",
+    "type": "library",
     "authors": [
         {
             "name": "Alejandro Palarich",
