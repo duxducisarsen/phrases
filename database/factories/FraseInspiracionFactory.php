@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\FraseInspiracion;
+use DuxDucisArsen\Models\FraseInspiracion;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FraseInspiracionFactory extends Factory

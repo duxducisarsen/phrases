@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace DuxDucisArsen\Models;
 
 use App\Traits\CreatedByCreatingEvent;
 use App\Traits\EloquentRelations\CreatedBy;

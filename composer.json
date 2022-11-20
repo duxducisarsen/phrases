@@ -26,9 +26,13 @@
         }
     },
     "require-dev": {
-        "laravel/framework": "^9.40"
+        "laravel/framework": "^9.40",
+        "orchestra/testbench": "^7.13"
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "post-autoload-dump": [
+            "@php vendor/bin/testbench package:discover --ansi"
+        ]
     }
 }

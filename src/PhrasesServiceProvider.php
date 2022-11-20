@@ -1,5 +1,7 @@
 <?php
 
+namespace DuxDucisArsen\Phrases;
+
 use Illuminate\Support\ServiceProvider;
 
 class PhrasesServiceProvider extends ServiceProvider

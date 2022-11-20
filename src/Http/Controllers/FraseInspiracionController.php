@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\HumanResources;
+namespace DuxDucisArsen\Http\Controllers\HumanResources;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\FraseInspiracionRequest;
-use App\Models\FraseInspiracion;
+use Illuminate\Routing\Controller;
+use DuxDucisArsen\Http\Requests\FraseInspiracionRequest;
+use DuxDucisArsen\Models\FraseInspiracion;
 
 class FraseInspiracionController extends Controller
 {
