@@ -7,6 +7,7 @@
 @section('breadcrumb')
     <a href="{{ route('phrase.index') }}">Frases Inspiración</a>
 @endsection
+
 @section('content')
     @if( $phrase->exists )
         <form action="{{ route('phrase.update', $phrase->id ) }}" method="post">
@@ -29,13 +30,14 @@
                 </div>
 
                 <div class="col-6">
+                    
                     <label for="is_private">Nivel Privacidad</label>
                     <select name="is_private" id="is_private" class="form-control">
-                        <option value="1" @selected( in_array('0', [$phrase->is_private, old('is_private')]) )
+                        <option value="1" @selected( in_array('1', [$phrase->is_private, old('is_private')]) )
                             >
                             Privada (solo quien la creó puede verla)
                         </option>
-                        <option value="0" @selected( in_array('1', [$phrase->is_private, old('is_private')]) )
+                        <option value="0" @selected( in_array('0', [$phrase->is_private, old('is_private')]) )
                             >
                             Pública
                         </option>

@@ -13,7 +13,7 @@ class PhraseRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->can('createOrEdit', DuxDucisArsen\Phrases\Models\Phrase::class);
+        return $this->user()->can('create', DuxDucisArsen\Phrases\Models\Phrase::class);
     }
 
     /**

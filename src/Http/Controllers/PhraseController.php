@@ -5,9 +5,11 @@ namespace DuxDucisArsen\Phrases\Http\Controllers;
 use Illuminate\Routing\Controller;
 use DuxDucisArsen\Phrases\Http\Requests\PhraseRequest;
 use DuxDucisArsen\Phrases\Models\Phrase;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PhraseController extends Controller
 {
+    use AuthorizesRequests;
 
     public function __construct()
     {
@@ -23,7 +25,7 @@ class PhraseController extends Controller
     {
         $this->authorize('viewAny', Phrase::class);
         $phrases = Phrase::all();
-        return view('phrase.index_phrase', compact('phrases'));
+        return view('phrases::index_phrases', compact('phrases'));
     }
 
     /**
@@ -33,9 +35,9 @@ class PhraseController extends Controller
      */
     public function create()
     {
-        $this->authorize('createOrEdit', Phrase::class);
+        $this->authorize('create', Phrase::class);
         $phrase = new Phrase;
-        return view('phrase.create_or_edit_phrase', compact('phrase'));
+        return view('phrases::create_or_edit_phrase', compact('phrase'));
     }
 
     /**
@@ -46,7 +48,7 @@ class PhraseController extends Controller
      */
     public function store(PhraseRequest $request)
     {
-        $this->authorize('createOrEdit', Phrase::class);
+        $this->authorize('create', Phrase::class);
         Phrase::create( $request->validated() );
         return redirect()->route('phrase.index')->with('success', 'Frase insertada con éxito');
     }
@@ -59,7 +61,7 @@ class PhraseController extends Controller
      */
     public function show($phrase)
     {
-        $this->authorize('view', Phrase::class);
+        $this->authorize('view', $phrase);
         return Phrase::getRandomPhrase();
     }
 
@@ -71,9 +73,9 @@ class PhraseController extends Controller
      */
     public function edit(Phrase $phrase)
     {
-        $this->authorize('createOrEdit', Phrase::class);
+        $this->authorize('edit', Phrase::class);
         $phrase->load('createdBy:id,name');
-        return view('phrase.create_or_edit_phrase', compact('phrase'));
+        return view('phrases::create_or_edit_phrase', compact('phrase'));
     }
 
     /**

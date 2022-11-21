@@ -4,11 +4,11 @@ namespace DuxDucisArsen\Phrases\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\User;
+use DuxDucisArsen\Phrases\Models\Phrase;
 
 class PhrasePolicy
 {
     use HandlesAuthorization;
-    use AccessPolicies;
 
 
     public function viewAny(User $user)
@@ -16,9 +16,9 @@ class PhrasePolicy
         return false;
     }
 
-    public function view(User $user)
+    public function view(User $user, Phrase $phrase)
     {
-        return true;
+        return $user->id == $phrase->created_by;
     }
 
     public function delete(User $user)
@@ -26,7 +26,7 @@ class PhrasePolicy
         return false;
     }
 
-    public function createOrEdit(User $user)
+    public function edit(User $user, Phrase $phrase )
     {
         return false;
     }
