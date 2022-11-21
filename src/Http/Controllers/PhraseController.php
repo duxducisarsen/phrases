@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class PhraseController extends Controller
 {
     use AuthorizesRequests;
+    // prueba
 
     public function __construct()
     {
