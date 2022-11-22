@@ -21,10 +21,6 @@ class PhrasePolicy
         return $user->id == $phrase->created_by;
     }
 
-    public function delete(User $user)
-    {
-        return false;
-    }
 
     public function edit(User $user, Phrase $phrase )
     {

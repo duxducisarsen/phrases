@@ -55,14 +55,13 @@ class PhraseController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int $phrase, dejo el parámetro para ponerle algo, pero en realidad siempre trae valor 1
+     * Toma una frase al azar entre las públicas y las del usuario
+     * No require autorización, cualquiera auth puede utilizar
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function show($phrase)
+    public function show()
     {
-        $this->authorize('view', $phrase);
         return Phrase::getRandomPhrase();
     }
 
