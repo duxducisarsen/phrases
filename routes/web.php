@@ -1,6 +1,9 @@
 <?php
 
-use DuxDucisArsen\Phrases\Http\Controllers\PhraseController;
 use Illuminate\Support\Facades\Route;
 
-Route::resource('phrase', PhraseController::class)->middleware(['web', 'auth']);   
+use DuxDucisArsen\Phrases\Http\Controllers\PhraseController;
+
+Route::group(['middleware' => config('phrase.middleware', ['web', 'auth'])], function () {
+    Route::resource('phrase', PhraseController::class);
+});

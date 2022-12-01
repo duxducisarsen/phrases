@@ -2,15 +2,11 @@
 
 namespace DuxDucisArsen\Phrases\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use DuxDucisArsen\Phrases\Http\Requests\PhraseRequest;
 use DuxDucisArsen\Phrases\Models\Phrase;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PhraseController extends Controller
 {
-    use AuthorizesRequests;
-    // prueba
 
     public function __construct()
     {
