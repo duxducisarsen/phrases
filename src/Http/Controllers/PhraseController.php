@@ -8,10 +8,10 @@ use DuxDucisArsen\Phrases\Models\Phrase;
 class PhraseController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('ajax')->only('show');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('ajax')->only('show');
+    // }
 
     /**
      * Display a listing of the resource.
@@ -58,6 +58,7 @@ class PhraseController extends Controller
      */
     public function show()
     {
+        return 'prueba';
         return Phrase::getRandomPhrase();
     }
 

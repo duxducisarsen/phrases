@@ -3,6 +3,7 @@
 namespace DuxDucisArsen\Phrases\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
+
 use App\Models\User;
 use DuxDucisArsen\Phrases\Models\Phrase;
 
