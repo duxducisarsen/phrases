@@ -77,10 +77,9 @@ class Phrase extends Model
      */
     static public function getPrivatePhrases($userId)
     {
-        return self::get();
-        // whereIsPrivate(1)
-                    // ->whereCreatedBy( $userId )
-                    // ->get();
+        return self::whereIsPrivate(1)
+                    ->whereCreatedBy( $userId )
+                    ->get();
     }
 
     /**
