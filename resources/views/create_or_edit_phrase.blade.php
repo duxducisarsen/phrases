@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('commons::layouts.app')
 
 @section('title', __('HR'))
 
